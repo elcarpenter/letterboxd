@@ -82,7 +82,6 @@ def director_data(string, director_dict):
         response = requests.get(url=link)
         string = response.text
         time.sleep(5)
-        print("still going...")
         director_data(string, director_dict)
     return director_dict
 
