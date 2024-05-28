@@ -1,6 +1,9 @@
 import requests
 import time
 
+# Takes the URL of a user's "FILMS" section of their profile and creates a ranked list of
+# the user's favorite directors, based on the user's average rating of the director's films.
+
 urlstring = 'https://letterboxd.com/elcarpenter/films/?filters=hide-shorts+hide-tv'
 response = requests.get(url=urlstring)
 string = response.text
