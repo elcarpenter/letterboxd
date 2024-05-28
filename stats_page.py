@@ -5,7 +5,7 @@ response = requests.get(url=urlstring)
 web_string = response.text
 
 
-def ID_title_rank(web_string, films, count):
+def get_ID_title(web_string, films, count):
     ranked = web_string.find('list-number')
     init = 0
     test = 0
@@ -33,9 +33,6 @@ def ID_title_rank(web_string, films, count):
         if ranked != -1:
             start1 = web_string.find('"list-number"',end1)
             end1 = web_string.find('<',start1 + 1)
-            rank = web_string[start1 + 14:end1]
-            # Add rank
-            films[count].append(rank)
         init = end1
         test = web_string.find('data-film-id=',end1,end)
         if test == -1 and nextstart == -1:
@@ -45,14 +42,13 @@ def ID_title_rank(web_string, films, count):
     if nextstart != -1:
         response = requests.get(url=link)
         web_string = response.text
-        ID_title_rank(web_string, films, count)
+        get_ID_title(web_string, films, count)
     return films
 
 def stats_page(web_string):
     "Compares leaving films against all lists on the LB stats page"
-    count = 0
     leaving_films = []
-    leaving_films = ID_title_rank(web_string, leaving_films, count)
+    leaving_films = get_ID_title(web_string, leaving_films, 0)
 
     stats_lists = {
         'Letterboxd': 'https://letterboxd.com/dave/list/official-top-250-narrative-feature-films/',
@@ -75,12 +71,11 @@ def stats_page(web_string):
     }
 
     for name, link in stats_lists.items():
-        count = 0
         urlstring = link
         response = requests.get(url=urlstring)
         movie_string = response.text
         movies = []
-        movies = ID_title_rank(movie_string, movies, count)
+        movies = get_ID_title(movie_string, movies, 0)
         common_movies = []
 
         for leaving_film in leaving_films:

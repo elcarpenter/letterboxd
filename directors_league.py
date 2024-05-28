@@ -19,7 +19,7 @@ def get_director(link):
     return directors
 
 def director_data(string, director_dict):
-    "Create director dictionary with names and ratings "
+    "Create director dictionary with names and ratings"
     init = 0
     test = 0
 

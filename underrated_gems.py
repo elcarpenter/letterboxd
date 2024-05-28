@@ -18,7 +18,6 @@ def get_num_ratings(link):
     return ratings
 
 def ID_Title_Rank(string, films, count):
-    ranked = string.find('list-number')
     init = 0
     test = 0
 
@@ -69,5 +68,4 @@ def ID_Title_Rank(string, films, count):
         ID_Title_Rank(string, films, count)
 
 films = []
-count = 0
-ID_Title_Rank(string, films, count)
+ID_Title_Rank(string, films, 0)
