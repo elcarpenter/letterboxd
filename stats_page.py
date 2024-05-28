@@ -6,6 +6,9 @@ web_string = response.text
 
 
 def get_ID_title(web_string, films, count):
+    """
+    Gather film IDs and film titles in LB list.
+    """
     ranked = web_string.find('list-number')
     init = 0
     test = 0
@@ -46,7 +49,9 @@ def get_ID_title(web_string, films, count):
     return films
 
 def stats_page(web_string):
-    "Compares leaving films against all lists on the LB stats page"
+    """
+    Compares leaving films against all lists on the LB stats page
+    """
     leaving_films = []
     leaving_films = get_ID_title(web_string, leaving_films, 0)
 

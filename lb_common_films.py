@@ -10,7 +10,9 @@ otherString = response.text
 
 
 def ID_title_rank(string, films, count):
-    "Identify the title, film ID, and ranking on secondary list"
+    """
+    Identify the title, film ID, and ranking on secondary list
+    """
     ranked = string.find('list-number')
     init = 0
     test = 0
@@ -51,6 +53,9 @@ def ID_title_rank(string, films, count):
 
 
 def compare_lists(string, otherString):
+    """
+    Get list of films common to both LB lists.
+    """
     films = []
     otherFilms =[]
     common = []

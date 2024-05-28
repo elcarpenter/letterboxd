@@ -5,7 +5,9 @@ response = requests.get(url=urlstring)
 string = response.text
 
 def get_num_ratings(link):
-    "Retrieves the number of ratings (not watches) a film has"
+    """
+    Retrieves the number of ratings (not watches) a film has.
+    """
     urlstring = 'https://letterboxd.com' + link
     response = requests.get(url=urlstring)
     string = response.text
